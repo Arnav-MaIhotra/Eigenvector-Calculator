@@ -35,9 +35,10 @@ class eigenvector:
       _, _, V = np.linalg.svd(B)
       eigenvector = V[-1]
       eigenvector = eigenvector / np.linalg.norm(eigenvector)
-      reciprocal = 1 / eigenvector[0]
-      for i in range(len(eigenvector)):
-        eigenvector[i] = reciprocal * eigenvector[i]
+      if eigenvector[0] != 0:
+        reciprocal = 1 / eigenvector[0]
+        for i in range(len(eigenvector)):
+          eigenvector[i] = reciprocal * eigenvector[i]
       self.eigenvectors.append(eigenvector)
 
     self.eigenvectors = np.array(self.eigenvectors)
